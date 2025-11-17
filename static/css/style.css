@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f8f6f8;
+    color: #4c3a3c;
+}
+
+/* Top navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    background: linear-gradient(90deg, #f3d9e1, #e6e1f5);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.logo-flower {
+    font-size: 20px;
+}
+
+.logo-text {
+    font-size: 18px;
+}
+
+.top-nav nav a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: #4c3a3c;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.top-nav nav a:hover {
+    background: rgba(255,255,255,0.6);
+    transform: translateY(-1px);
+}
+
+/* Main content */
+.content {
+    padding: 24px 32px 60px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    color: #7a6468;
+}
+
+/* Cards and layout */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    background: rgba(243, 217, 225, 0.4);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #d7b7d8;
+    color: #4c3a3c;
+    border: none;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+    background: #c69ba7;
+    transform: translateY(-1px);
+}
+
+/* Calendar */
+.calendar-page h1 {
+    margin-bottom: 4px;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.calendar-nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #4c3a3c;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-header {
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom: 6px;
+    color: #7a6468;
+}
+
+.calendar-cell {
+    min-height: 80px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    position: relative;
+}
+
+.calendar-cell.other-month {
+    background: #f0edf3;
+    color: #a99ca0;
+}
+
+.day-number {
+    font-size: 13px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+}
+
+.mini-events {
+    list-style: none;
+    padding-left: 0;
+    margin: 6px 0 0;
+    font-size: 11px;
+}
+
+.mini-event {
+    border-radius: 999px;
+    padding: 2px 6px;
+    margin-bottom: 2px;
+    background: #f3d9e1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Categories color coding */
+.event-item.school, .mini-event.school {
+    background: #e6e1f5;
+}
+
+.event-item.work, .mini-event.work {
+    background: #f7e0c3;
+}
+
+.event-item.gym, .mini-event.gym {
+    background: #c8d8c2;
+}
+
+.event-item.family, .mini-event.family {
+    background: #f3d9e1;
+}
+
+.event-item.other, .mini-event.other {
+    background: #e2e2e2;
+}
+
+/* Day & week */
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.week-day-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.small-link {
+    font-size: 12px;
+    text-decoration: none;
+    color: #7a6468;
+}
+
+.light-text {
+    font-size: 12px;
+    color: #a99ca0;
+}
+
+/* Forms */
+label {
+    display: block;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 10px;
+    border: 1px solid #e0d4df;
+    font-size: 13px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+/* Dashboard date */
+.today-date {
+    font-size: 14px;
+    color: #7a6468;
+    margin-bottom: 16px;
+}

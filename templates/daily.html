@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Day View{% endblock %}
+
+{% block content %}
+<section class="day-page">
+    <h1>Day View</h1>
+    <p class="today-date">{{ day_str }}</p>
+
+    <div class="day-layout">
+        <div class="card">
+            <h2>Events</h2>
+            {% if events %}
+                <ul class="event-list">
+                    {% for event in events %}
+                        <li class="event-item {{ event.category }}">
+                            <strong>{{ event.title }}</strong><br>
+                            <span>{{ event.start_time }} - {{ event.end_time }}</span><br>
+                            <span>{{ event.category|capitalize }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No events for this day.</p>
+            {% endif %}
+            <a href="{{ url_for('events_page') }}" class="btn">Add / Edit Events</a>
+        </div>
+
+        <div class="card">
+            <h2>Daily Note</h2>
+            <form method="POST">
+                <textarea name="note_content" rows="6" placeholder="Write your thoughts, to-dos, or reminders here...">{% if note %}{{ note.content }}{% endif %}</textarea>
+                <button type="submit" class="btn">Save Note</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Gym Log</h2>
+            {% if gym_log %}
+                <p>✅ You logged the gym for this day.</p>
+            {% else %}
+                <p>Gym not logged for this day.</p>
+            {% endif %}
+            <form method="POST" action="{{ url_for('gym_page') }}">
+                <input type="hidden" name="date" value="{{ day_str }}">
+                <button type="submit" class="btn">Toggle Gym for this Day</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<section class="events-page">
+    <h1>Events & Schedule</h1>
+
+    <div class="page-layout">
+        <div class="card">
+            <h2>Add New Event</h2>
+            <form method="POST">
+                <label>Title</label>
+                <input type="text" name="title" required>
+
+                <label>Date</label>
+                <input type="date" name="date" required>
+
+                <label>Start Time</label>
+                <input type="time" name="start_time">
+
+                <label>End Time</label>
+                <input type="time" name="end_time">
+
+                <label>Category</label>
+                <select name="category">
+                    <option value="school">School</option>
+                    <option value="work">Work</option>
+                    <option value="gym">Gym</option>
+                    <option value="family">Family</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label>Notes</label>
+                <textarea name="notes" rows="3"></textarea>
+
+                <button type="submit" class="btn">Save Event</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>All Events</h2>
+            {% if events %}
+                <ul class="event-list">
+                    {% for event in events %}
+                        <li class="event-item {{ event.category }}">
+                            <strong>{{ event.date }} – {{ event.title }}</strong><br>
+                            <span>{{ event.start_time }} - {{ event.end_time }}</span><br>
+                            <span>{{ event.category|capitalize }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No events yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

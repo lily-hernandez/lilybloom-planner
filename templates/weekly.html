@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Weekly View{% endblock %}
+
+{% block content %}
+<section class="week-page">
+    <h1>Week at a Glance</h1>
+
+    <div class="week-grid">
+        {% for d in week_dates %}
+            {% set d_str = d.strftime('%Y-%m-%d') %}
+            <div class="week-day-card">
+                <h2>{{ d.strftime('%a %d') }}</h2>
+                <a href="{{ url_for('day_view', day_str=d_str) }}" class="small-link">Open Day</a>
+                {% if events_by_date.get(d_str) %}
+                    <ul class="mini-events">
+                        {% for event in events_by_date.get(d_str) %}
+                            <li class="mini-event {{ event.category }}">{{ event.title }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="light-text">No events.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

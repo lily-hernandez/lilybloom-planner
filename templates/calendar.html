@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Calendar{% endblock %}
+
+{% block content %}
+<section class="calendar-page">
+    <h1>Calendar</h1>
+
+    <div class="calendar-nav">
+        <a href="{{ url_for('calendar_view', year=year, month=month-1) }}">‹ Prev</a>
+        <h2>{{ month }}/{{ year }}</h2>
+        <a href="{{ url_for('calendar_view', year=year, month=month+1) }}">Next ›</a>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="calendar-header">Mon</div>
+        <div class="calendar-header">Tue</div>
+        <div class="calendar-header">Wed</div>
+        <div class="calendar-header">Thu</div>
+        <div class="calendar-header">Fri</div>
+        <div class="calendar-header">Sat</div>
+        <div class="calendar-header">Sun</div>
+
+        {% for day in month_days %}
+            <div class="calendar-cell {% if day.month != month %}other-month{% endif %}">
+                <a href="{{ url_for('day_view', day_str=day.strftime('%Y-%m-%d')) }}" class="day-number">
+                    {{ day.day }}
+                </a>
+                {% set day_key = day.strftime('%Y-%m-%d') %}
+                {% if events_by_date.get(day_key) %}
+                    <ul class="mini-events">
+                        {% for event in events_by_date.get(day_key)[:2] %}
+                            <li class="mini-event {{ event.category }}">{{ event.title }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Gym Tracker{% endblock %}
+
+{% block content %}
+<section class="gym-page">
+    <h1>Gym Tracker</h1>
+
+    <div class="card">
+        <h2>Log a Gym Day</h2>
+        <form method="POST">
+            <label>Date</label>
+            <input type="date" name="date" required>
+            <button type="submit" class="btn">Toggle Gym for Date</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Gym History</h2>
+        {% if logs %}
+            <ul class="event-list">
+                {% for log in logs %}
+                    <li>💪 {{ log.date }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No gym days logged yet.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
